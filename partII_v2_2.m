@@ -1,0 +1,16 @@
+clear all; 
+close all;
+load lightField.mat;
+sensorWidth = 0.01; 
+numPixels = 800;
+d2=0.4;
+d1=0.4;
+f=0.2;
+Mf = [1 0 0 0; -1/f 1 0 0; 0 0 1 0; 0 0 -1/f 1]; 
+Md2 = [1 d2 0 0; 0 1 0 0; 0 0 1 d2; 0 0 0 1];
+raysImaged = Md2*Mf*rays;
+[img,~,~] = rays2img(raysImaged(1,:),raysImaged(3,:),sensorWidth,numPixels);
+figure; 
+img=flip(img, 2); 
+imshow(img); 
+axis image; 
