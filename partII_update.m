@@ -2,8 +2,6 @@ clear;
 close all;
 
 load lightField.mat
-
-
 %% 
 
 % Initialize 
@@ -21,8 +19,6 @@ image = rays2img(rays_x,rays_y,sensorWidth,numPixels);
 figure;
 imshow(image);
 title('First render');
-
-
 
 d1 = 0.4;
 d2 = 0.4;
@@ -43,7 +39,7 @@ for d1 = 0.35 : 0.01 : 0.45
     f = d2*d1/(d1+d2);
     
     [rays_x,rays_y] = propRays(d1,d2,f,rays);
-    
+
     img = rays2img(rays_x,rays_y,sensorWidth,numPixels);
     figure;
     imshow(flip(img,2))
